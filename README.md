@@ -1,4 +1,4 @@
-# Exam Counselling
+# Exam Counselling Model
 
 ## Project Data:
 
