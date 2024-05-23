@@ -6,16 +6,16 @@ import math
 root = Tk()
 root.geometry('800x500')
 root.resizable(0, 0)
-root.title("JoSAA Counselling")
-Label(root, text='JoSAA Counselling', font='arial 20 bold').pack()
+root.title("Counselling Window")
+Label(root, text='Exam Counselling', font='arial 20 bold').pack()
 
 #enter link
 linkstu = StringVar()
-Label(root, text='Paste Student data Here:', font='arial 15 bold').place(x=160, y=60)
-link_enter = Entry(root, width=70, textvariable=linkstu).place(x=150, y=90)
+Label(root, text='Paste Student data Here:', font='arial 15 bold').place(x=50, y=70)
+link_enter = Entry(root, width=70, textvariable=linkstu).place(x=50, y=100)
 linkcol = StringVar()
-Label(root, text='Paste College data Here:', font='arial 15 bold').place(x=160, y=150)
-link_enter = Entry(root, width=70, textvariable=linkcol).place(x=150, y=180)
+Label(root, text='Paste College data Here:', font='arial 15 bold').place(x=50, y=160)
+link_enter = Entry(root, width=70, textvariable=linkcol).place(x=50, y=190)
 
 
 def Executer():
@@ -250,17 +250,17 @@ def Executer():
 
             student[i] = studata
 
-    os.mkdir(r'Josaa Output')
+    os.mkdir(r'Authority Output')
 
     dfc = pd.DataFrame(college)
     dfc = dfc.transpose()
-    dfc.to_csv(r'./Josaa Output/college_output.csv', index=True)
+    dfc.to_csv(r'./Authority Output/college_output.csv', index=True)
 
     stu = pd.DataFrame(student)
     stu = stu.transpose()
     stu = stu.sort_values(stu.columns[1], axis=0)
     stu = stu.set_index(stu.columns[1]).reset_index()
-    stu.to_csv(r'./Josaa Output/student_output.csv', index=False)
+    stu.to_csv(r'./Authority Output/student_output.csv', index=False)
 
     os.mkdir(r'College Output')
 
@@ -277,8 +277,8 @@ def Executer():
 
     print('Data submitted')
 
-    Label(root, text='Executed successfully', font='impact 14 ').place(x=180, y=210)
+    Label(root, text='Executed Successfully', font='arial 14 bold').place(x=265, y=300)
 
-Button(root, text='Execute', font='arial 15 bold', bg='red', padx=2, command=Executer).place(x=180,y=250)
+Button(root, text='Execute', font='arial 15 bold', bg='red', padx=2, command=Executer).place(x=290,y=250)
 
 root.mainloop()
