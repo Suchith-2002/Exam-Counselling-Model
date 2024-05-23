@@ -26,8 +26,6 @@ def Executer():
     def prepcol(col, gres=0.3, cres=0.25):
         coldic = {}
         for i in range(col.shape[0]):
-            # for i in range(1):
-
             # For every college
             name_col = col.iloc[i]["Name of College"]
             matr = {}
@@ -65,7 +63,6 @@ def Executer():
 
         studic = {}
         for i in range(stu.shape[0]):
-            # for i in range (1):
             dic = {}
             dic["Name"] = stu.iloc[i][stu.columns[2]]
             dic["Rollno"] = stu.iloc[i][stu.columns[1]]
@@ -74,14 +71,14 @@ def Executer():
             dic['PWD'] = stu.iloc[i][stu.columns[5]]
             dic['Rank'] = stu.iloc[i][stu.columns[0]]
             rno = stu.iloc[i][stu.columns[0]]
-            # lis=[stu.iloc[i][stu.columns[2]],stu.iloc[i][stu.columns[1]],stu.iloc[i][stu.columns[3]],stu.iloc[i][stu.columns[4]],stu.iloc[i][stu.columns[5]]]
+
             prefl = []
             for j in range(6, stu.shape[1]):
                 if isinstance(stu.iloc[i][stu.columns[j]], float):
                     break
 
                 prefl.append((stu.iloc[i][stu.columns[j]].split("_")))
-            # lis.append(prefl)
+
             dic["prefl"] = prefl
             studic[rno] = dic
 
@@ -129,7 +126,7 @@ def Executer():
             if status == 0:
                 studata["Seat Allotted"] = "Sorry, you got no seat"
                 studata["Preference Number"] = 0
-            # studata.pop(-2)
+
             student[i] = studata
 
         elif gender == "M" and caste == 'Res' and pwd == 'No':
@@ -157,7 +154,6 @@ def Executer():
             if status == 0:
                 studata["Seat Allotted"] = "Sorry, you got no seat"
                 studata["Preference Number"] = 0
-            # studata.pop(-2)
 
             student[i] = studata
 
@@ -186,7 +182,7 @@ def Executer():
             if status == 0:
                 studata["Seat Allotted"] = "Sorry, you got no seat"
                 studata["Preference Number"] = 0
-            # studata.pop(-2)
+
             student[i] = studata
 
         elif gender == "F" and caste == 'Res' and pwd == 'No':
@@ -225,7 +221,6 @@ def Executer():
                 studata["Seat Allotted"] = "Sorry, you got no seat"
                 studata["Preference Number"] = 0
 
-            # studata.pop(-2)
             student[i] = studata
 
         elif pwd == 'Yes':
@@ -253,22 +248,21 @@ def Executer():
                 studata["Seat Allotted"] = "Sorry, you got no seat"
                 studata["Preference Number"] = 0
 
-            # studata.pop(-2)
             student[i] = studata
 
-    os.mkdir(r'/Users/suchith/Desktop/NITS/Python/JOSAA Model/Josaa Output')
+    os.mkdir(r'Josaa Output')
 
     dfc = pd.DataFrame(college)
     dfc = dfc.transpose()
-    dfc.to_csv(r'/Users/suchith/Desktop/NITS/Python/JOSAA Model/Josaa Output/college_output.csv', index=True)
+    dfc.to_csv(r'./Josaa Output/college_output.csv', index=True)
 
     stu = pd.DataFrame(student)
     stu = stu.transpose()
     stu = stu.sort_values(stu.columns[1], axis=0)
     stu = stu.set_index(stu.columns[1]).reset_index()
-    stu.to_csv(r'/Users/suchith/Desktop/NITS/Python/JOSAA Model/Josaa Output/student_output.csv', index=False)
+    stu.to_csv(r'./Josaa Output/student_output.csv', index=False)
 
-    os.mkdir(r'/Users/suchith/Desktop/NITS/Python/JOSAA Model/College Output')
+    os.mkdir(r'College Output')
 
     for i in college.keys():
         out = {}
@@ -279,13 +273,11 @@ def Executer():
         df = pd.DataFrame.from_dict(out, orient='index')
         df = df.transpose()
         df = df.rename_axis("{}".format(i))
-        df.to_csv(r'/Users/suchith/Desktop/NITS/Python/JOSAA Model/College Output/{}.csv'.format(i), index=False)
+        df.to_csv(r'./College Output/{}.csv'.format(i), index=False)
 
     print('Data submitted')
 
-
     Label(root, text='Executed successfully', font='impact 14 ').place(x=180, y=210)
-
 
 Button(root, text='Execute', font='arial 15 bold', bg='red', padx=2, command=Executer).place(x=180,y=250)
 
