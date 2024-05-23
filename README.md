@@ -65,7 +65,7 @@
 
 You will be prompted by an output window that looks something like this:
 
-![1716494300153](image/README/1716494300153.png "GUI")
+![1716498203430](image/README/1716498203430.png)
 
 * Copy the path of "**Student_Data.csv**" that is been created before.
 * Paste the address in the designated Dialogue Box.
