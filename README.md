@@ -14,7 +14,6 @@
 ## Authors:
 
 * **Uppalapati Suchith Chowdary**
-* **Chirumamilla Deepika**
 
 ## Prerequisites:
 
